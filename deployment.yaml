@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: salary-tax-deployment
+  labels:
+    app: salary-tax-app
 spec:
   replicas: 2
   selector:
@@ -14,6 +16,7 @@ spec:
     spec:
       containers:
       - name: salary-tax-app
-        image: manogna2309/salary-tax-app:latest
+        # Replace <YOUR_DOCKER_USERNAME> with your Docker Hub username
+        image: <YOUR_DOCKER_USERNAME>/salary-tax-app:latest
         ports:
         - containerPort: 5000
