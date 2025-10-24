@@ -1,12 +1,19 @@
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: salary-tax-service
+  name: salary-tax-deployment
 spec:
+  replicas: 2
   selector:
-    app: salary-tax
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 5000
-  type: LoadBalancer   # Use NodePort if on local minikube
+    matchLabels:
+      app: salary-tax-app
+  template:
+    metadata:
+      labels:
+        app: salary-tax-app
+    spec:
+      containers:
+      - name: salary-tax-app
+        image: <YOUR_DOCKER_USERNAME>/salary-tax-app:latest
+        ports:
+        - containerPort: 5000
