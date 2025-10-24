@@ -17,6 +17,6 @@ spec:
       containers:
       - name: salary-tax-app
         # Replace <YOUR_DOCKER_USERNAME> with your Docker Hub username
-        image: <YOUR_DOCKER_USERNAME>/salary-tax-app:latest
+        image: manogna2309/salary-tax-app:latest
         ports:
         - containerPort: 5000
