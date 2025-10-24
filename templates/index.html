@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Tax Calculator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Salary Tax Calculator</h1>
+        <form method="POST">
+            <label for="salary">Enter your annual salary:</label>
+            <input type="number" id="salary" name="salary" required>
+            <button type="submit">Calculate Tax</button>
+        </form>
+
+        {% if tax is not none %}
+        <div class="result">
+            <h2>Results:</h2>
+            <p>Salary: ₹{{ salary }}</p>
+            <p>Estimated Tax: ₹{{ tax }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

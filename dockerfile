@@ -1,21 +1,18 @@
-# Use small official python image
+# Use official Python base image
 FROM python:3.11-slim
 
-# Set working dir
+# Set working directory
 WORKDIR /app
 
-# Copy requirements and install
+# Copy requirements and install dependencies
 COPY requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy app
-COPY app.py .
+# Copy the app source code
+COPY . .
 
-ENV PORT=5000
-
-# Expose port
+# Expose Flask default port
 EXPOSE 5000
 
-# Run with gunicorn for production-like
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app", "--workers", "2"]
+# Command to run the app
+CMD ["python", "app.py"]
